@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-def config():
+def db_config():
     db ={
         "host": os.getenv("DB_HOST"),
         "database": os.getenv("DB_NAME"),
