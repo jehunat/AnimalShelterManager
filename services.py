@@ -8,14 +8,18 @@ def add_kennel(name, capacity):
     conn.commit()
     cur.close()
     conn.close()
+    # return es ne printelj
     print(f"Kennel '{name}' added successfully")
 
 
 def add_animal(name, species, breed, birth_date, kennel_id=None):
+    # old meg, hogy ne ismetlodjon minden funkciobna a csatlakozas es lecsatlakozas
+    # contextmanager
     conn = connect()
     cur = conn.cursor()
 
     if kennel_id:
+        # %s szep hasznald ezt mindenhol.
         cur.execute("""
                     INSERT INTO Animal (name, species, breed, birth_date, arrival_date, kennel_id, status)
                     VALUES (%s, %s, %s, %s, CURRENT_DATE, %s, 'active')
@@ -56,6 +60,7 @@ def assign_vaccination(animal_id, vaccination_id):
 
 
 def list_animals():
+    # miert vaan ketszer a name?
     conn = connect()
     cur = conn.cursor()
     cur.execute("""
