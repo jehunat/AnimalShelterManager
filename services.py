@@ -1,6 +1,6 @@
 from db import connect
 
-
+# csinalhatnal valami meno valtozas kezeles kovetest is.
 def add_kennel(name, capacity):
     conn = connect()
     cur = conn.cursor()
@@ -13,6 +13,7 @@ def add_kennel(name, capacity):
 
 
 def add_animal(name, species, breed, birth_date, kennel_id=None):
+    # hol van az, amikor orokbe lett fogadva?
     # old meg, hogy ne ismetlodjon minden funkciobna a csatlakozas es lecsatlakozas
     # contextmanager
     conn = connect()
@@ -77,6 +78,7 @@ def list_animals():
 
 
 def list_kennels():
+    #mova animal? mi van akkor ha atkerul egy masik kernelbe?
     conn = connect()
     cur = conn.cursor()
     cur.execute("SELECT * FROM Kennel")
