@@ -4,6 +4,19 @@ from services import *
 def menu():
     print("\n--- Animal Shelter Management ---")
     while True:
+        # while true az ordog muve., ezt csak akkor lehet hasznalni, ha az ordog a lelkedet akarja. while user_response !=0
+        # keruld ezeket a printeket, ifeket, probald meg valahogy ugy megoldani, hogyha kivalasztja az user, az adott menut, akkor egy funkcio meghivodik es az keri be a tovabbi inputokat
+        # csoportosisd funkcio szerint, (add, list, assign) valami ilyesmi:
+        # errorhandling szep, de mi van az osszes tobbi mezo error handlingjevel?
+
+# MAIN_MENU = {
+#     "Add": {
+#        1: ("New kennel", add_kennel),
+#        2: ("New animal", add_animal),
+#        3: ("New vaccination", add_vaccination),
+    #  },
+        # keress ra a function reference execution -ra pythonban.
+        # for fun. adj hozza jogosultsag kezelest. 
         print("1. Add new kennel")
         print("2. Add new animal")
         print("3. Add new vaccination")
