@@ -1,6 +1,6 @@
 from db import connect
 
-
+# csinalhatnal valami meno valtozas kezeles kovetest is.
 def add_kennel(name, capacity):
     conn = connect()
     cur = conn.cursor()
@@ -8,14 +8,19 @@ def add_kennel(name, capacity):
     conn.commit()
     cur.close()
     conn.close()
+    # return es ne printelj
     print(f"Kennel '{name}' added successfully")
 
 
 def add_animal(name, species, breed, birth_date, kennel_id=None):
+    # hol van az, amikor orokbe lett fogadva?
+    # old meg, hogy ne ismetlodjon minden funkciobna a csatlakozas es lecsatlakozas
+    # contextmanager
     conn = connect()
     cur = conn.cursor()
 
     if kennel_id:
+        # %s szep hasznald ezt mindenhol.
         cur.execute("""
                     INSERT INTO Animal (name, species, breed, birth_date, arrival_date, kennel_id, status)
                     VALUES (%s, %s, %s, %s, CURRENT_DATE, %s, 'active')
@@ -56,6 +61,7 @@ def assign_vaccination(animal_id, vaccination_id):
 
 
 def list_animals():
+    # miert vaan ketszer a name?
     conn = connect()
     cur = conn.cursor()
     cur.execute("""
@@ -72,6 +78,7 @@ def list_animals():
 
 
 def list_kennels():
+    #mova animal? mi van akkor ha atkerul egy masik kernelbe?
     conn = connect()
     cur = conn.cursor()
     cur.execute("SELECT * FROM Kennel")
