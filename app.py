@@ -6,10 +6,16 @@ from services.animal_service import AnimalService
 from services.db import Database
 
 
+@st.cache_resource
+def get_db():
+    db = Database()
+    db.init_db()
+    return db
+
+
 class App:
     def __init__(self):
-        self.db = Database()
-        self.db.init_db()
+        self.db = get_db()
         self.animal_service = AnimalService(self.db)
         self.selected_page = None
         st.set_page_config(
