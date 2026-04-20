@@ -1,3 +1,5 @@
+import datetime
+
 import streamlit as st
 from streamlit_option_menu import option_menu
 from services.animal_service import AnimalService
@@ -59,7 +61,9 @@ class App:
                 name = st.text_input("Name")
                 species = st.text_input("Species")
                 breed = st.text_input("Breed")
-                birth_date = st.date_input("Birth date")
+                birth_date = st.date_input("Birth date",
+                                           min_value=datetime.date(1990,1,1),
+                                           max_value=datetime.date.today())
                 kennel_id = st.number_input("Kennel ID (optional)", min_value=0, step=1)
                 submitted = st.form_submit_button("Add Animal")
 
